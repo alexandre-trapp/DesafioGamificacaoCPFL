@@ -17,6 +17,16 @@ namespace DesafioGamificacaoCPFL.Controllers
             _logger = logger;
         }
 
+        [HttpPost]
+        public ActionResult<Cliente> Create(Cliente cliente)
+        {
+            return new Cliente
+            {
+                Cpf = "162.108.960-65",
+                Nome = "Delcio"
+            };
+        }
+
         [HttpGet("{id}")]
         public ActionResult<Cliente> Get(int id)
         {
@@ -25,6 +35,13 @@ namespace DesafioGamificacaoCPFL.Controllers
                 Cpf = "162.108.960-65",
                 Nome = "Delcio"
             };
+        }
+
+        [HttpGet()]
+        public ActionResult<IEnumerable<Cliente>> GetAll()
+        {
+            // todo
+            return new List<Cliente>();
         }
     }
 }
