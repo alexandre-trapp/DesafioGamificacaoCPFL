@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
+using DesafioGamificacaoCPFL.Infra.Database.Repositories;
 
 namespace DesafioGamificacaoCPFL.Controllers
 {
@@ -11,37 +13,31 @@ namespace DesafioGamificacaoCPFL.Controllers
     public class ClientesController : ControllerBase
     {
         private readonly ILogger<ClientesController> _logger;
+        private readonly IClienteRepository _clienteRepository;
 
-        public ClientesController(ILogger<ClientesController> logger)
+        public ClientesController(ILogger<ClientesController> logger,
+            IClienteRepository clienteRepository)
         {
             _logger = logger;
+            _clienteRepository = clienteRepository;
         }
 
         [HttpPost]
-        public ActionResult<Cliente> Create(Cliente cliente)
+        public async Task<ActionResult<string>> Create(Cliente cliente)
         {
-            return new Cliente
-            {
-                Cpf = "162.108.960-65",
-                Nome = "Delcio"
-            };
+            return await _clienteRepository.Create(cliente);
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Cliente> Get(int id)
+        public async Task<ActionResult<Cliente>> Get(string id)
         {
-            return new Cliente
-            {
-                Cpf = "162.108.960-65",
-                Nome = "Delcio"
-            };
+            return await _clienteRepository.Get(id);
         }
 
         [HttpGet()]
-        public ActionResult<IEnumerable<Cliente>> GetAll()
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetAll()
         {
-            // todo
-            return new List<Cliente>();
+            return await _clienteRepository.GetAll();
         }
     }
 }

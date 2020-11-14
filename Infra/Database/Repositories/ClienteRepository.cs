@@ -14,7 +14,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         public ClienteRepository(IDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
-            var database = client.GetDatabase(settings.);
+            var database = client.GetDatabase(settings.DatabaseName);
 
             _clientes = database.GetCollection<Cliente>(settings.ClientesCollectionName);
         }
