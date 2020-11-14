@@ -1,6 +1,6 @@
+using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System;
 
 namespace DesafioGamificacaoCPFL
 {
@@ -10,8 +10,8 @@ namespace DesafioGamificacaoCPFL
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; internal set; }
 
-        public string Nome{ get; internal set; }
+        public string Nome{ get; set; }
 
-        public string Cpf { get; internal set; }
+        public string Cpf { get; set; }
     }
 }
