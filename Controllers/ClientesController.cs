@@ -9,7 +9,7 @@ using DesafioGamificacaoCPFL.Infra.Database.Repositories;
 namespace DesafioGamificacaoCPFL.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("")]
     public class ClientesController : ControllerBase
     {
         private readonly ILogger<ClientesController> _logger;
@@ -22,19 +22,19 @@ namespace DesafioGamificacaoCPFL.Controllers
             _clienteRepository = clienteRepository;
         }
 
-        [HttpPost("/create")]
+        [HttpPost("clientes/create")]
         public async Task<ActionResult<string>> Create(Cliente cliente)
         {
             return await _clienteRepository.Create(cliente);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("clientes/{id}")]
         public async Task<ActionResult<Cliente>> Get(string id)
         {
             return await _clienteRepository.Get(id);
         }
 
-        [HttpGet("/getAll")]
+        [HttpGet("clientes/getAll")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetAll()
         {
             return await _clienteRepository.GetAll();
