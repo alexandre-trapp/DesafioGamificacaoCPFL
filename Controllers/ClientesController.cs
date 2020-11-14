@@ -22,7 +22,7 @@ namespace DesafioGamificacaoCPFL.Controllers
             _clienteRepository = clienteRepository;
         }
 
-        [HttpPost]
+        [HttpPost("/create")]
         public async Task<ActionResult<string>> Create(Cliente cliente)
         {
             return await _clienteRepository.Create(cliente);
@@ -34,7 +34,7 @@ namespace DesafioGamificacaoCPFL.Controllers
             return await _clienteRepository.Get(id);
         }
 
-        [HttpGet()]
+        [HttpGet("/getAll")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetAll()
         {
             return await _clienteRepository.GetAll();
