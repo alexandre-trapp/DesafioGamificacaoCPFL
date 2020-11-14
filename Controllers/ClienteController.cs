@@ -22,8 +22,8 @@ namespace DesafioGamificacaoCPFL.Controllers
         {
             return new Cliente
             {
-                Cpf = "1234",
-                Nome = "ronaldo"
+                Cpf = "162.108.960-65",
+                Nome = "Delcio"
             };
         }
     }
