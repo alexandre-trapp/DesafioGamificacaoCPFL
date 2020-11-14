@@ -7,8 +7,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Settings
 {
     public interface IDatabaseSettings
     {
-        const string ClientesCollectionName = "Clientes";
-
+        string ClientesCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

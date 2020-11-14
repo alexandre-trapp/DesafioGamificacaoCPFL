@@ -9,5 +9,6 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Settings
     {
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
+        public string ClientesCollectionName { get; set; }
     }
 }
