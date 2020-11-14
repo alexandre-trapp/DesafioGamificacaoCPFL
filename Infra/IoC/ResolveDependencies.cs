@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using DesafioGamificacaoCPFL.Infra.Database.Settings;
+using DesafioGamificacaoCPFL.Infra.Database.Repositories;
 
 namespace DesafioGamificacaoCPFL.Infra.IoC
 {
@@ -14,6 +15,8 @@ namespace DesafioGamificacaoCPFL.Infra.IoC
 
             services.AddSingleton<IDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+
+            services.AddScoped<IClienteRepository, ClienteRepository>();
         }
     }
 }
