@@ -8,17 +8,17 @@ namespace DesafioGamificacaoCPFL.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ClienteController : ControllerBase
+    public class ClientesController : ControllerBase
     {
-        private readonly ILogger<ClienteController> _logger;
+        private readonly ILogger<ClientesController> _logger;
 
-        public ClienteController(ILogger<ClienteController> logger)
+        public ClientesController(ILogger<ClientesController> logger)
         {
             _logger = logger;
         }
 
-        [HttpGet("{id:length(24)}")]
-        public Cliente Get(string id)
+        [HttpGet("{id}")]
+        public ActionResult<Cliente> Get(int id)
         {
             return new Cliente
             {
