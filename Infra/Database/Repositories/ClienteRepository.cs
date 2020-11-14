@@ -35,10 +35,10 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             return cliente.First();
         }
 
-        public async Task<List<Cliente>> GetAll()
+        public async Task<IEnumerable<Cliente>> GetAll()
         {
             var clientes = await _clientes.FindAsync<Cliente>(cliente => true);
-            return clientes?.ToList();
+            return clientes.ToEnumerable();
         }   
     }
 }

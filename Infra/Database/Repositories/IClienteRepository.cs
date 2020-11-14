@@ -8,7 +8,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
     public interface IClienteRepository
     {
         Task<Cliente> Get(string id);
-        Task<List<Cliente>> GetAll();
+        Task<IEnumerable<Cliente>> GetAll();
         Task<string> Create(Cliente cliente);
     }
 }

@@ -25,19 +25,19 @@ namespace DesafioGamificacaoCPFL.Controllers
         [HttpPost("clientes/cadastrar")]
         public async Task<ActionResult<string>> Create(Cliente cliente)
         {
-            return await _clienteRepository.Create(cliente);
+            return Ok(await _clienteRepository.Create(cliente));
         }
 
         [HttpGet("clientes/{id}")]
         public async Task<ActionResult<Cliente>> Get(string id)
         {
-            return await _clienteRepository.Get(id);
+            return Ok(await _clienteRepository.Get(id));
         }
 
         [HttpGet("clientes/listarTodos")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetAll()
         {
-            return await _clienteRepository.GetAll();
+            return Ok(await _clienteRepository.GetAll());
         }
     }
 }
