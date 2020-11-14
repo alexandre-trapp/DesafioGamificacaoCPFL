@@ -32,6 +32,8 @@ namespace DesafioGamificacaoCPFL
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
+
+            AddSwaggerConfig(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
