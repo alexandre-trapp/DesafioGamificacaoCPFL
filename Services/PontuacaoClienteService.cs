@@ -81,6 +81,7 @@ namespace DesafioGamificacaoCPFL.Services
         {
             pontuacaoCliente.QuantidadePontosAtual = _pontuacaoClienteResponse.TotalPontosCliente;
             pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel = _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel;
+            pontuacaoCliente.QuantidadeXP += _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel;
 
             await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoCliente);
         }
@@ -106,6 +107,7 @@ namespace DesafioGamificacaoCPFL.Services
 
             pontuacaoAtual.QuantidadeNovosPontos = 0;
             pontuacaoAtual.QuantidadePontosAtual = pontuacaoAtual.QuantidadePontosAtual - resgatePontos.QuantidadePontosResgatados;
+
             await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoAtual);
         }
     }
