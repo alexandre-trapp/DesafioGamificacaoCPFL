@@ -29,7 +29,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         {
             var pontuacaoCliente = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacaoCliente => pontuacaoCliente.ClienteId == clienteId);
 
-            if (pontuacaoCliente == null)
+            if (!pontuacaoCliente.Any())
                 throw new OperationCanceledException($"pontuacaoCliente não encontrado com o clienteId {clienteId}");
 
             return pontuacaoCliente.First();
