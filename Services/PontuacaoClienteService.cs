@@ -92,7 +92,9 @@ namespace DesafioGamificacaoCPFL.Services
         private async Task AtualizarPontuacaoCliente(PontuacaoCliente pontuacaoCliente)
         {
             pontuacaoCliente.QuantidadePontosAtual = _pontuacaoClienteResponse.TotalPontosCliente;
-            pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel = _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel;
+
+            if (_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0)
+                pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel = _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel ;
 
             pontuacaoCliente.QuantidadeXP = _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0
 
