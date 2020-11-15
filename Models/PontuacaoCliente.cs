@@ -7,7 +7,7 @@ namespace DesafioGamificacaoCPFL.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        internal string Id { get; set; }
+        public string Id { get; set; }
 
         public string ClienteId { get; set; }
         public int QuantidadePontos { get; set; }

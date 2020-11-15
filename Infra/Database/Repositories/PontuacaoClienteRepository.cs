@@ -42,7 +42,12 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         }
 
         public async Task Update(PontuacaoCliente pontuacaoCliente) =>
-            await _pontuacaoCliente.ReplaceOneAsync(pontuacao => 
-                pontuacao.ClienteId == pontuacaoCliente.ClienteId, pontuacaoCliente);
+            
+            await _pontuacaoCliente.UpdateOneAsync(pontuacao => 
+                pontuacao.ClienteId == pontuacaoCliente.ClienteId,
+                Builders<PontuacaoCliente>.Update
+                    .Set(pontuacao => pontuacao.QuantidadePontos, pontuacaoCliente.QuantidadePontos))
+
+            .ConfigureAwait(false);
     }
 }
