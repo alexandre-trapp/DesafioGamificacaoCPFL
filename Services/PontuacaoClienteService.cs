@@ -84,7 +84,7 @@ namespace DesafioGamificacaoCPFL.Services
             _pontuacaoClienteResponse.TotalPontosCliente = (pontuacaoCliente.QuantidadePontosAtual +
 
                                                              (_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0
-                                                                ? _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
+                                                                ? pontuacaoCliente.QuantidadeNovosPontos + _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
                                                                 : pontuacaoCliente.QuantidadeNovosPontos));
         }
 
