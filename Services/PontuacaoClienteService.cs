@@ -61,7 +61,7 @@ namespace DesafioGamificacaoCPFL.Services
             if (pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel == 0)
                 _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(PONTUACAO_BONUS_INICIAL * 1.2);
             else
-                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel * 1.2);
+                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel * 1.2);
         }
 
         private void CalcularQuantosPontosPrecisaParaAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
