@@ -20,7 +20,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             _pagamentoParcial = database.GetCollection<PagamentoParcial>(settings.PagamentoParcialCollectionName);
         }
 
-        public async Task CriarNovoPagamentoParcial(PagamentoParcial pagamentoParcial)
+        public async Task CadastrarNovoPagamentoParcial(PagamentoParcial pagamentoParcial)
         {
             await _pagamentoParcial.InsertOneAsync(pagamentoParcial);
         }

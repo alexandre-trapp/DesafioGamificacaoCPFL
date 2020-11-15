@@ -6,6 +6,6 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
     public interface IPagamentoParcialRepository
     {
         Task<PagamentoParcial> ConsultarPagamentoParcialDoCliente(string clienteId);
-        Task CriarNovoPagamentoParcial(PagamentoParcial pagamentoParcial);
+        Task CadastrarNovoPagamentoParcial(PagamentoParcial pagamentoParcial);
     }
 }
