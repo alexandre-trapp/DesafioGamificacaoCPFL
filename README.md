@@ -13,6 +13,7 @@ Para acessar as APIs, pode acessar o link externo exibido acima, ou baixar e exe
 ## Download do projeto
 
 - No seu git bash, powershell, vscode ou VisualStudio, poderá fazer o clone do repositório e abrir o projeto:
+  
   git clone https://github.com/alexandre-trapp/DesafioGamificacaoCPFL.git
 
 - O banco de dados mongodb já está configurado no atlas para uso, porém irei desativar o cluster após 
