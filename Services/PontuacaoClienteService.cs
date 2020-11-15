@@ -36,7 +36,7 @@ namespace DesafioGamificacaoCPFL.Services
             await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoCliente);
 
             _pontuacaoClienteResponse.Mensagem = $"{mensagemAtingiuProximoNivel}Pontuação atualizada com sucesso, sua nova pontuação é {pontuacaoCliente.QuantidadePontosAtual}, " +
-                $"faltando {pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos ou mais para atingir o próximo nível!";
+                $"agora falta só mais {pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos para atingir o próximo nível e conseguir mais descontos!";
 
             return _pontuacaoClienteResponse;
         }
