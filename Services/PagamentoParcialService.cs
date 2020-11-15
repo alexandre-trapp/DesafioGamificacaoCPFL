@@ -24,7 +24,7 @@ namespace DesafioGamificacaoCPFL.Services
                 QuantidadeParcelas = pagamentoParcial.QuantidadeParcelas,
                 Mensagem = $"Pagamento parcial em {pagamentoParcial.QuantidadeParcelas} parcelas no valor de " + 
                            string.Format(new CultureInfo("pt-BR"), "{0:C}", pagamentoParcial.ValorDaParcela) +
-                           $" - para o cliente {(await clienteRepository.Get(pagamentoParcial.ClienteId)).Nome} cadastrado com sucesso"
+                           $" para o cliente {(await clienteRepository.Get(pagamentoParcial.ClienteId)).Nome} cadastrado com sucesso"
             };
         }
 
