@@ -42,10 +42,10 @@ namespace DesafioGamificacaoCPFL.Services
         private void CalcularQuantosPontosPrecisaParaAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
         {
             if (pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel > 0)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel - pontuacaoCliente.QuantidadeNovosPontosRecebidos;
+                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel - pontuacaoCliente.QuantidadeNovosPontos;
 
             else if (pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel == 0)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadeNovosPontosRecebidos;
+                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadeNovosPontos;
 
             else
                 pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel * -1;

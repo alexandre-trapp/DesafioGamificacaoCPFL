@@ -24,9 +24,18 @@ namespace DesafioGamificacaoCPFL.Controllers
             _pontuacaoRepository = pontuacaoRepository;
         }
 
+        /// <summary>
+        /// No cadastro inicial de pontos, informar os pontos iniciais no campo
+        /// quantidadeNovosPontos, não informar nada no campo quantidadePontosAtual, o mesmo será atualizado
+        /// com a informação do campo quantidadeNovosPontos.
+        /// </summary>
+        /// <param name="pontuacaoCliente"></param>
+        /// <returns></returns>
         [HttpPost("pontuacaoCliente/cadastrar/")]
         public async Task<ActionResult> Create(PontuacaoCliente pontuacaoCliente)
         {
+            pontuacaoCliente.QuantidadePontosAtual = pontuacaoCliente.QuantidadeNovosPontos;
+
             await _pontuacaoRepository.Create(pontuacaoCliente);
             return NoContent();
         }
