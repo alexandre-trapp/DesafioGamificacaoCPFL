@@ -12,7 +12,7 @@ namespace DesafioGamificacaoCPFL.Models
         public int QuantidadePontosAtual { get; internal set; }
         public int QuantidadeXP { get; internal set; }
         public int QuantidadeNovosPontos { get; set; }
-        public int QuantidadePontosNecessariosParaAtingirProximoNivel { get; internal set; }
+        public int QuantidadePontosXpNecessariosParaAtingirProximoNivel { get; internal set; }
         public int QuantidadePontosDeBonusRecebidosCadaNivel { get; internal set; }
     }
 
@@ -39,6 +39,6 @@ namespace DesafioGamificacaoCPFL.Models
         public int PontosGanhosBonusPorAtingirNovoNivel { get; set; }
         public int TotalPontosCliente { get; set; }
         public string Mensagem { get; set; }
-        public int QuantidadePontosNecessariosParaAtingirProximoNivel { get; internal set; }
+        public int QuantidadePontosXpNecessariosParaAtingirProximoNivel { get; internal set; }
     }
 }

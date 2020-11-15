@@ -47,7 +47,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
                     .Set(pontuacao => pontuacao.QuantidadeNovosPontos, pontuacaoCliente.QuantidadeNovosPontos)
                     .Set(pontuacao => pontuacao.QuantidadeXP, pontuacaoCliente.QuantidadeXP)
                     .Set(pontuacao => pontuacao.QuantidadePontosDeBonusRecebidosCadaNivel, pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel)
-                    .Set(pontuacao => pontuacao.QuantidadePontosNecessariosParaAtingirProximoNivel, pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel));
+                    .Set(pontuacao => pontuacao.QuantidadePontosXpNecessariosParaAtingirProximoNivel, pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel));
         }
     }
 }

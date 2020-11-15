@@ -36,7 +36,7 @@ namespace DesafioGamificacaoCPFL.Controllers
         {
             pontuacaoCliente.QuantidadePontosAtual = pontuacaoCliente.QuantidadeNovosPontos;
             pontuacaoCliente.QuantidadeXP = pontuacaoCliente.QuantidadeNovosPontos;
-            pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = PontuacaoClienteService.PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL;
+            pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel = PontuacaoClienteService.PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL;
 
             await _pontuacaoRepository.Create(pontuacaoCliente);
             return NoContent();

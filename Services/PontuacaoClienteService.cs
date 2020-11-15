@@ -38,7 +38,7 @@ namespace DesafioGamificacaoCPFL.Services
             {
                 mensagemAtingiuProximoNivel = "Parabéns, você atingiu o próximo nível!" + Environment.NewLine;
 
-                CalcularQuantidadeDePontosGanhosPorAtingirProximoNivel(pontuacaoCliente);
+                CalcularQuantidadeDePontosBonusGanhosPorAtingirProximoNivel(pontuacaoCliente);
                 CalcularQuantosPontosPrecisaParaAtingirProximoNivel(pontuacaoCliente);
             }
 
@@ -46,39 +46,39 @@ namespace DesafioGamificacaoCPFL.Services
 
             await AtualizarPontuacaoCliente(pontuacaoCliente);
 
-            _pontuacaoClienteResponse.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel;
+            _pontuacaoClienteResponse.QuantidadePontosXpNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel;
 
             _pontuacaoClienteResponse.Mensagem = $"{mensagemAtingiuProximoNivel}Pontuação atualizada com sucesso, sua nova pontuação é {pontuacaoCliente.QuantidadePontosAtual}" +
-                $" e {pontuacaoCliente.QuantidadeXP} de XP, você precisa somar {pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} " +
+                $" e {pontuacaoCliente.QuantidadeXP} de XP, você precisa somar {pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel} " +
                 $"pontos para atingir o próximo nível e conseguir ainda mais descontos!";
 
             return _pontuacaoClienteResponse;
         }
 
         private bool ClienteAtingiuProximoNivel(PontuacaoCliente pontuacaoCliente) =>
-            (pontuacaoCliente.QuantidadePontosAtual + pontuacaoCliente.QuantidadeNovosPontos) >= pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel;
+            (pontuacaoCliente.QuantidadeXP + pontuacaoCliente.QuantidadeNovosPontos) >= pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel;
 
-        private void CalcularQuantidadeDePontosGanhosPorAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
+        private void CalcularQuantidadeDePontosBonusGanhosPorAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
         {
             if (pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel == 0)
-                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(PONTUACAO_BONUS_INICIAL * 1.2);
+                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = PONTUACAO_BONUS_INICIAL;
             else
                 _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel * 1.2);
         }
 
         private void CalcularQuantosPontosPrecisaParaAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
         {
-            var quantidadePontosAtualSomadoComNovosPontos = pontuacaoCliente.QuantidadePontosAtual + pontuacaoCliente.QuantidadeNovosPontos;
+            var quantidadeXpAtualSomadoComNovosPontos = pontuacaoCliente.QuantidadeXP + pontuacaoCliente.QuantidadeNovosPontos;
 
-            if (quantidadePontosAtualSomadoComNovosPontos < PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL;
+            if (quantidadeXpAtualSomadoComNovosPontos < PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL)
+                pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel = PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL;
 
-            else if (quantidadePontosAtualSomadoComNovosPontos == PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = (int)(PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL *
+            else if (quantidadeXpAtualSomadoComNovosPontos == PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL)
+                pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel = (int)(PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL *
                                                                                             MULTIPLICADOR_PONTUACAO_PARA_ATINGIR_PROXIMO_NIVEL);
 
-            else if (quantidadePontosAtualSomadoComNovosPontos >= pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = (int)(pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel *
+            else if (quantidadeXpAtualSomadoComNovosPontos >= pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel)
+                pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel = (int)(pontuacaoCliente.QuantidadePontosXpNecessariosParaAtingirProximoNivel *
                                                                                             MULTIPLICADOR_PONTUACAO_PARA_ATINGIR_PROXIMO_NIVEL);
         }
 
