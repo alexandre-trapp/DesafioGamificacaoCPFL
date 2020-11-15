@@ -58,9 +58,9 @@ namespace DesafioGamificacaoCPFL.Services
         private void CalcularQuantidadeDePontosGanhosPorAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
         {
             if (pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel == 0)
-                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = Convert.ToInt32(PONTUACAO_BONUS_INICIAL * 1.2);
+                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(PONTUACAO_BONUS_INICIAL * 1.2);
             else
-                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = Convert.ToInt32(_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel * 1.2);
+                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel = (int)(_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel * 1.2);
         }
 
         private void CalcularQuantosPontosPrecisaParaAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
@@ -71,12 +71,12 @@ namespace DesafioGamificacaoCPFL.Services
                 pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL;
 
             else if (quantidadePontosAtualSomadoComNovosPontos == PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = Convert.ToInt32(PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL *
-                                                                                                      MULTIPLICADOR_PONTUACAO_PARA_ATINGIR_PROXIMO_NIVEL);
+                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = (int)(PONTUACAO_INICIAL_PARA_PASSAR_PRIMEIRO_NIVEL *
+                                                                                            MULTIPLICADOR_PONTUACAO_PARA_ATINGIR_PROXIMO_NIVEL);
 
             else if (quantidadePontosAtualSomadoComNovosPontos >= pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = Convert.ToInt32(pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel *
-                                                                                                      MULTIPLICADOR_PONTUACAO_PARA_ATINGIR_PROXIMO_NIVEL);
+                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = (int)(pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel *
+                                                                                            MULTIPLICADOR_PONTUACAO_PARA_ATINGIR_PROXIMO_NIVEL);
         }
 
         private void CalcularQuantidadeDePontosTotalDoCliente(PontuacaoCliente pontuacaoCliente)
