@@ -11,5 +11,6 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Settings
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
         string PontuacaoClienteCollectionName { get; set; }
+        string PagamentoParcialCollectionName { get; set; }
     }
 }
