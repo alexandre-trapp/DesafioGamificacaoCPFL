@@ -24,15 +24,10 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             await _pagamentoParcial.InsertOneAsync(pagamentoParcial);
         }
 
-        public async Task<PagamentoParcial> ConsultarPagamentoParcialDoCliente(string clienteId)
+        public async Task<IEnumerable<PagamentoParcial>> ConsultarPagamentosParciaisDoCliente(string clienteId)
         {
-            var buscaPagamento = await _pagamentoParcial.FindAsync<PagamentoParcial>(pagamento => pagamento.ClienteId == clienteId);
-            var pagamentoParcial = buscaPagamento.FirstOrDefault();
-
-            if (pagamentoParcial == null)
-                throw new OperationCanceledException($"pagamento parcial do cliente com id {clienteId} não encontrado no sistema.");
-
-            return pagamentoParcial;
+            var pagamentosParciais = await _pagamentoParcial.FindAsync<PagamentoParcial>(pagamento => pagamento.ClienteId == clienteId);
+            return pagamentosParciais?.ToEnumerable();
         }
     }
 }

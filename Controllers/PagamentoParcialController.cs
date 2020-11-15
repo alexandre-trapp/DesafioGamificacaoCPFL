@@ -37,9 +37,9 @@ namespace DesafioGamificacaoCPFL.Controllers
         }
 
         [HttpGet("pagamentoParcial/consultarPagamentoParcialDoCliente/{clienteId}")]
-        public async Task<ActionResult<PagamentoParcial>> ConsultarPagamentoParcialDoCliente(string clienteId)
+        public async Task<ActionResult<IEnumerable<PagamentoParcial>>> ConsultarPagamentoParcialDoCliente(string clienteId)
         {
-            return Ok(await _pagamentoParcialRepository.ConsultarPagamentoParcialDoCliente(clienteId));
+            return Ok(await _pagamentoParcialRepository.ConsultarPagamentosParciaisDoCliente(clienteId));
         }
     }
 }

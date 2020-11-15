@@ -1,11 +1,12 @@
 ﻿using System.Threading.Tasks;
+using System.Collections.Generic;
 using DesafioGamificacaoCPFL.Models;
 
 namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
 {
     public interface IPagamentoParcialRepository
     {
-        Task<PagamentoParcial> ConsultarPagamentoParcialDoCliente(string clienteId);
         Task CadastrarNovoPagamentoParcial(PagamentoParcial pagamentoParcial);
+        Task<IEnumerable<PagamentoParcial>> ConsultarPagamentosParciaisDoCliente(string clienteId);
     }
 }
