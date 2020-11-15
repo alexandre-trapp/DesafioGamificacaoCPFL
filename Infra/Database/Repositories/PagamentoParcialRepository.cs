@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -27,12 +26,13 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
 
         public async Task<PagamentoParcial> ConsultarPagamentoParcialDoCliente(string clienteId)
         {
-            var pagamentoParcial = await _pagamentoParcial.FindAsync<PagamentoParcial>(cliente => cliente.Id == clienteId);
+            var buscaPagamento = await _pagamentoParcial.FindAsync<PagamentoParcial>(cliente => cliente.Id == clienteId);
+            var pagamentoParcial = buscaPagamento.FirstOrDefault();
 
-            if (pagamentoParcial == null || !pagamentoParcial.Any())
+            if (pagamentoParcial == null)
                 throw new OperationCanceledException($"pagamento parcial do cliente com id {clienteId} não encontrado no sistema.");
 
-            return await pagamentoParcial.FirstAsync();
+            return pagamentoParcial;
         }
     }
 }

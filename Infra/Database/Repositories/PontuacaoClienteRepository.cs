@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -28,27 +27,30 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
 
         public async Task<PontuacaoCliente> Get(string clienteId)
         {
-            var pontuacaoCliente = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacaoCliente => pontuacaoCliente.ClienteId == clienteId);
+            var buscaPontuacao = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacaoCliente => pontuacaoCliente.ClienteId == clienteId);
+            var pontuacaoCliente = buscaPontuacao.FirstOrDefault();
 
-            if (pontuacaoCliente == null || !pontuacaoCliente.Any())
+            if (pontuacaoCliente == null)
                 throw new OperationCanceledException($"Pontuação do cliente com o id {clienteId} não encontrado no sistema.");
 
-            return await pontuacaoCliente.FirstAsync();
+            return pontuacaoCliente;
         }
 
         public async Task<IEnumerable<PontuacaoCliente>> GetAll()
         {
             var pontuacaoClientes = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacao => true);
-            return await pontuacaoClientes?.ToListAsync();
+            return pontuacaoClientes?.ToEnumerable();
         }
 
-        public async Task Update(PontuacaoCliente pontuacaoCliente) =>
-            
-            await _pontuacaoCliente.UpdateOneAsync(pontuacao => 
+        public async Task Update(PontuacaoCliente pontuacaoCliente)
+        {
+            await _pontuacaoCliente.UpdateOneAsync(pontuacao =>
+
                 pontuacao.ClienteId == pontuacaoCliente.ClienteId,
                 Builders<PontuacaoCliente>.Update
                     .Set(pontuacao => pontuacao.QuantidadePontos, pontuacaoCliente.QuantidadePontos))
 
             .ConfigureAwait(false);
+        }
     }
 }

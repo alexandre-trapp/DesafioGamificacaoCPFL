@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -30,18 +29,19 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
 
         public async Task<Cliente> Get(string id)
         {
-            var cliente = await _clientes.FindAsync<Cliente>(cliente => cliente.Id == id);
+            var buscaCliente = await _clientes.FindAsync<Cliente>(cliente => cliente.Id == id);
+            var cliente = buscaCliente.FirstOrDefault();
 
-            if (cliente == null || !cliente.Any())
+            if (cliente == null)
                 throw new OperationCanceledException($"Cliente com o id {id} não encontrado no sistema.");
 
-            return await cliente.FirstAsync();
+            return cliente;
         }
 
         public async Task<IEnumerable<Cliente>> GetAll()
         {
             var clientes = await _clientes.FindAsync<Cliente>(cliente => true);
-            return await clientes?.ToListAsync();
+            return clientes?.ToEnumerable();
         }   
     }
 }
