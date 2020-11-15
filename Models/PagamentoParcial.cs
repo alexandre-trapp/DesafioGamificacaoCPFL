@@ -20,6 +20,7 @@ namespace DesafioGamificacaoCPFL.Models
     {
         public decimal ValorRestante { get; internal set; }
         public decimal ValorDaParcela { get; internal set; }
+        public decimal QuantidadeParcelas { get; set; }
         public string Mensagem { get; internal set; }
     }
 }

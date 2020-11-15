@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DesafioGamificacaoCPFL.Models;
 using DesafioGamificacaoCPFL.Infra.Database.Repositories;
+using System.Globalization;
 
 namespace DesafioGamificacaoCPFL.Services
 {
@@ -20,7 +21,10 @@ namespace DesafioGamificacaoCPFL.Services
             {
                 ValorRestante = pagamentoParcial.ValorRestante,
                 ValorDaParcela = pagamentoParcial.ValorDaParcela,
-                Mensagem = $"Pagamento parcial para o cliente {(await clienteRepository.Get(pagamentoParcial.ClienteId)).Nome} cadastrado com sucesso"
+                QuantidadeParcelas = pagamentoParcial.QuantidadeParcelas,
+                Mensagem = $"Pagamento parcial em {pagamentoParcial.QuantidadeParcelas} parcelas no valor de " + 
+                           string.Format(new CultureInfo("pt-BR"), "{0:C}", pagamentoParcial.ValorDaParcela) +
+                           $" - para o cliente {(await clienteRepository.Get(pagamentoParcial.ClienteId)).Nome} cadastrado com sucesso"
             };
         }
 
