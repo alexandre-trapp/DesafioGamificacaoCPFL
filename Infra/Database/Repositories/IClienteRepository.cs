@@ -10,5 +10,6 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         Task<Cliente> Get(string id);
         Task<IEnumerable<Cliente>> GetAll();
         Task<string> Create(Cliente cliente);
+        Task Delete(string id);
     }
 }

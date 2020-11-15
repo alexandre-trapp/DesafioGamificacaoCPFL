@@ -25,6 +25,9 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             return cliente.Id;
         }
 
+        public async Task Delete(string id) =>
+            await _clientes.DeleteOneAsync(cliente => cliente.Id == id);
+
         public async Task<Cliente> Get(string id)
         {
             var cliente = await _clientes.FindAsync<Cliente>(cliente => cliente.Id == id);

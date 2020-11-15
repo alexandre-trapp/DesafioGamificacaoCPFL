@@ -39,5 +39,12 @@ namespace DesafioGamificacaoCPFL.Controllers
         {
             return Ok(await _clienteRepository.GetAll());
         }
+
+        [HttpDelete("clientes/{id}")]
+        public async Task<ActionResult> Delete(string id)
+        {
+            await _clienteRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
