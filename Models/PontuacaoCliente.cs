@@ -39,5 +39,6 @@ namespace DesafioGamificacaoCPFL.Models
         public int PontosGanhosBonusPorAtingirNovoNivel { get; set; }
         public int TotalPontosCliente { get; set; }
         public string Mensagem { get; set; }
+        public int QuantidadePontosNecessariosParaAtingirProximoNivel { get; internal set; }
     }
 }
