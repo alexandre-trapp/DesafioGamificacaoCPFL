@@ -19,15 +19,11 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             _pontuacaoCliente = database.GetCollection<PontuacaoCliente>(settings.PontuacaoClienteCollectionName);
         }
 
-        public async Task Create(PontuacaoCliente pontuacaoCliente)
-        {
+        public async Task Create(PontuacaoCliente pontuacaoCliente) =>
             await _pontuacaoCliente.InsertOneAsync(pontuacaoCliente);
-        }
 
-        public async Task Delete(string clienteId)
-        {
+        public async Task Delete(string clienteId) =>
             await _pontuacaoCliente.DeleteOneAsync(pontuacao => pontuacao.ClienteId == clienteId);
-        }
 
         public async Task<PontuacaoCliente> Get(string clienteId)
         {
@@ -45,9 +41,8 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             return pontuacaoClientes.ToEnumerable();
         }
 
-        public async Task Update(PontuacaoCliente pontuacaoCliente, string clienteId)
-        {
-            //await _pontuacaoCliente.UpdateOneAsync(pontuacaoCliente, );
-        }
+        public async Task Update(PontuacaoCliente pontuacaoCliente) =>
+            await _pontuacaoCliente.ReplaceOneAsync(pontuacao => 
+                pontuacao.ClienteId == pontuacaoCliente.ClienteId, pontuacaoCliente);
     }
 }

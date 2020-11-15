@@ -9,6 +9,6 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         Task<PontuacaoCliente> Get(string clienteId);
         Task Create(PontuacaoCliente pontuacaoCliente);
         Task Delete(string clienteId);
-        Task Update(PontuacaoCliente pontuacaoCliente, string clienteId);
+        Task Update(PontuacaoCliente pontuacaoCliente);
     }
 }
