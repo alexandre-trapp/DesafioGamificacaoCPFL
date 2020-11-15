@@ -49,7 +49,7 @@ namespace DesafioGamificacaoCPFL.Controllers
         }
 
         [HttpPost("pontuacaoCliente/adicionarPontosAoCliente")]
-        public async Task<ActionResult> AdicionarPontosAoCliente(PontuacaoCliente pontuacaoCliente)
+        public async Task<ActionResult> AdicionarPontosAoCliente(AdicionarPontuacaoClienteRequest pontuacaoCliente)
         {
             var pontuacaoClienteService = new PontuacaoClienteService(_pontuacaoRepository);
             return Ok(await pontuacaoClienteService.AdicionarPontosAoClienteConformeRegraDeGamificacao(pontuacaoCliente));

@@ -19,9 +19,19 @@ namespace DesafioGamificacaoCPFL.Services
         public PontuacaoClienteService(IPontuacaoClienteRepository pontuacaoClienteRepository) =>
             _pontuacaoClienteRepository = pontuacaoClienteRepository;
 
-        public async Task<PontuacaoClienteResponse> AdicionarPontosAoClienteConformeRegraDeGamificacao(PontuacaoCliente pontuacaoCliente)
+        public async Task<PontuacaoClienteResponse> AdicionarPontosAoClienteConformeRegraDeGamificacao(AdicionarPontuacaoClienteRequest pontuacaoClienteRequest)
         {
             string mensagemAtingiuProximoNivel = string.Empty;
+
+            var pontuacaoCliente = await _pontuacaoClienteRepository.Get(pontuacaoClienteRequest.ClienteId);
+            if (pontuacaoCliente == null)
+            {
+                throw new OperationCanceledException("Não é possível adicionar pontos ao cliente, pois ele ainda não possui pontos, " +
+                    "deve-se chamar a api '/pontuacaoCliente/cadastrar' para cadastro inicial da pontuação.");
+            }
+
+            pontuacaoCliente.QuantidadeNovosPontos = pontuacaoClienteRequest.QuantidadeNovosPontos;
+
             _pontuacaoClienteResponse = new PontuacaoClienteResponse();
 
             if (ClienteAtingiuProximoNivel(pontuacaoCliente))

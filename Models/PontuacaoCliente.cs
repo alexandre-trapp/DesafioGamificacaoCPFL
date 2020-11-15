@@ -28,6 +28,12 @@ namespace DesafioGamificacaoCPFL.Models
         public string Mensagem { get; set; }
     }
 
+    public class AdicionarPontuacaoClienteRequest
+    {
+        public string ClienteId { get; set; }
+        public int QuantidadeNovosPontos { get; set; }
+    }
+
     public class PontuacaoClienteResponse
     {
         public int PontosGanhosBonusPorAtingirNovoNivel { get; set; }
