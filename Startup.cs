@@ -1,8 +1,11 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using System.IO;
+using System.Reflection;
+using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using DesafioGamificacaoCPFL.Infra.IoC;
+using Swashbuckle.AspNetCore.SwaggerGen;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -73,7 +76,17 @@ namespace DesafioGamificacaoCPFL
                     Title = "API para receber os dados do frontend",
                     Version = "v1"
                 });
+
+                SetCommentsPathForSwagger(c);
             });
+        }
+
+        private static void SetCommentsPathForSwagger(SwaggerGenOptions c)
+        {
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(Directory.GetCurrentDirectory(), xmlFile);
+
+            c.IncludeXmlComments(xmlPath);
         }
     }
 }

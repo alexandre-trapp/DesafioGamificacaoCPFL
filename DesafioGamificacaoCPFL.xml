@@ -4,5 +4,14 @@
         <name>DesafioGamificacaoCPFL</name>
     </assembly>
     <members>
+        <member name="M:DesafioGamificacaoCPFL.Controllers.PontuacaoClienteController.Create(DesafioGamificacaoCPFL.Models.PontuacaoCliente)">
+            <summary>
+            No cadastro inicial de pontos, informar os pontos iniciais no campo
+            quantidadeNovosPontos, não informar nada no campo quantidadePontosAtual, o mesmo será atualizado
+            com a informação do campo quantidadeNovosPontos.
+            </summary>
+            <param name="pontuacaoCliente"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
