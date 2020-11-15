@@ -10,9 +10,10 @@ namespace DesafioGamificacaoCPFL.Models
         public string Id { get; internal set; }
         public string ClienteId { get; set; }
         public int QuantidadePontosAtual { get; set; }
+        public int QuantidadeXP { get; set; }
         public int QuantidadeNovosPontos { get; set; }
-        public int QuantidadePontosPadraoParaProximoNivel { get; set; }
         public int QuantidadePontosNecessariosParaAtingirProximoNivel { get; set; }
+        internal int QuantidadePontosDeBonusRecebidosCadaNivel { get; set; }
     }
 
     public class ResgatePontosRequest
