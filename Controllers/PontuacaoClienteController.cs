@@ -4,8 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using DesafioGamificacaoCPFL.Infra.Database.Repositories;
 using DesafioGamificacaoCPFL.Models;
+using DesafioGamificacaoCPFL.Services;
+using DesafioGamificacaoCPFL.Infra.Database.Repositories;
 
 namespace DesafioGamificacaoCPFL.Controllers
 {
@@ -36,11 +37,11 @@ namespace DesafioGamificacaoCPFL.Controllers
             return Ok(await _pontuacaoRepository.Get(clienteId));
         }
 
-        [HttpPost("pontuacaoCliente/atualizar")]
-        public async Task<ActionResult> Update(PontuacaoCliente pontuacaoCliente)
+        [HttpPost("pontuacaoCliente/atualizarPontosCliente")]
+        public async Task<ActionResult> AtualizarPontosCliente(PontuacaoCliente pontuacaoCliente)
         {
-            await _pontuacaoRepository.Update(pontuacaoCliente);
-            return NoContent();
+            var pontuacaoClienteService = new PontuacaoClienteService(_pontuacaoRepository);
+            return Ok(await pontuacaoClienteService.AtualizarPontuacaoClienteConformeRegraDeGamificacao(pontuacaoCliente));
         }
 
         [HttpDelete("pontuacaoCliente/deletar")]
