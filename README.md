@@ -1,10 +1,10 @@
 # Desafio Gamificacao CPFL
-#Apis
+
+# REST API para consumo pelo frontend do desafio CPFL:
 
 - a documentação das APIs via Swagger pode ser acessada externamente em:
   - https://desafiogamificacaocpfl20201114183303.azurewebsites.net/swagger/index.html
-
-# REST API para consumo pelo frontend do desafio CPFL, para 
+  
 gerenciar os dados dos cliente, pagamentos parciais das faturas e cálculo de pontuações, XPs e bônus 
 para os clientes trocarem por descontos ou cupons em lojas.
 
