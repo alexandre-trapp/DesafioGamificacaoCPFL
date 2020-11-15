@@ -44,7 +44,7 @@ namespace DesafioGamificacaoCPFL.Services
         }
 
         private bool ClienteAtingiuProximoNivel(PontuacaoCliente pontuacaoCliente) =>
-            pontuacaoCliente.QuantidadePontosAtual >= pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel;
+            (pontuacaoCliente.QuantidadePontosAtual + pontuacaoCliente.QuantidadeNovosPontos) >= pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel;
 
         private void CalcularQuantidadeDePontosGanhosPorAtingirProximoNivel(PontuacaoCliente pontuacaoCliente)
         {
