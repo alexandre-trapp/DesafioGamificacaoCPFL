@@ -18,7 +18,8 @@ Para acessar as APIs, pode acessar o link externo exibido acima, ou baixar e exe
 
 - O banco de dados mongodb já está configurado no atlas para uso, porém irei desativar o cluster após 
   o desafio, se baixar e quiser rodar, poderá criar uma conta free em https://www.mongodb.com/cloud/atlas, criar o cluster, usuário e senha
-  e gerar uma string de conexão, informando-a no arquivo appsettings.json na raiz do projeto (DatabaseSettings > ConnectionString)
+  e gerar uma string de conexão, informando-a no arquivo appsettings.json na raiz do projeto (DatabaseSettings > ConnectionString), aqui tem uma documentação como 
+  fazer isso: https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-5.0&tabs=visual-studio
   
    
 ## Build / Run 
