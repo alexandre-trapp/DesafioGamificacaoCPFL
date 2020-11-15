@@ -14,7 +14,7 @@ Para acessar as APIs, pode acessar o link externo exibido acima, ou baixar e exe
 
 - No seu git bash, powershell, vscode ou VisualStudio, poderá fazer o clone do repositório e abrir o projeto:
   
-  git clone https://github.com/alexandre-trapp/DesafioGamificacaoCPFL.git
+  **git clone** https://github.com/alexandre-trapp/DesafioGamificacaoCPFL.git
 
 - O banco de dados mongodb já está configurado no atlas para uso, porém irei desativar o cluster após 
   o desafio, se baixar e quiser rodar, poderá criar uma conta free em https://www.mongodb.com/cloud/atlas, criar o cluster, usuário e senha
@@ -24,7 +24,7 @@ Para acessar as APIs, pode acessar o link externo exibido acima, ou baixar e exe
    
 ## Build / Run 
 - Pra rodar a aplicação, pode ser pelo VisualStudio se já tiver familiaridade, dando o build na solution ou projeto (Ctrl + B),
-ou no vscode, bash, powrshell (com o sdk do .net core 3.1 instalado - https://dotnet.microsoft.com/download/dotnet-core/3.1) executar o comando dotnet build e em seguida dotnet run, na
+ou no vscode, bash, powrshell (com o sdk do .net core 3.1 instalado - https://dotnet.microsoft.com/download/dotnet-core/3.1) executar o comando **dotnet build** e em seguida **dotnet run**, na
 raiz do projeto.
 
 # REST API
