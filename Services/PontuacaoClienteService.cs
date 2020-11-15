@@ -36,8 +36,7 @@ namespace DesafioGamificacaoCPFL.Services
             await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoCliente);
 
             _pontuacaoClienteResponse.Mensagem = $"{mensagemAtingiuProximoNivel}Pontuação atualizada com sucesso, sua nova pontuação é {pontuacaoCliente.QuantidadePontosAtual}, " +
-                $"faltando {pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos para atingir o próximo nível " +
-                $"({pontuacaoCliente.QuantidadePontosAtual + pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos ou mais.)";
+                $"faltando {pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos ou mais para atingir o próximo nível!";
 
             return _pontuacaoClienteResponse;
         }
@@ -70,7 +69,7 @@ namespace DesafioGamificacaoCPFL.Services
             _pontuacaoClienteResponse.TotalPontosCliente = (pontuacaoCliente.QuantidadePontosAtual +
 
                                                              (_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0
-                                                                ? (pontuacaoCliente.QuantidadeNovosPontos + _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel)
+                                                                ? _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
                                                                 : pontuacaoCliente.QuantidadeNovosPontos) );
     }
 }
