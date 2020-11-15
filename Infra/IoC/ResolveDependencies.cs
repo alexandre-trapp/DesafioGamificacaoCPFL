@@ -16,7 +16,8 @@ namespace DesafioGamificacaoCPFL.Infra.IoC
             services.AddSingleton<IDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
-            services.AddScoped<IClienteRepository, ClienteRepository>();
+            services.AddSingleton<IClienteRepository, ClienteRepository>();
+            services.AddSingleton<IPontuacaoClienteRepository, PontuacaoClienteRepository>();
         }
     }
 }

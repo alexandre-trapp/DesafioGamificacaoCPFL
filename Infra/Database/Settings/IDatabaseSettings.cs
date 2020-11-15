@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace DesafioGamificacaoCPFL.Infra.Database.Settings
 {
@@ -10,5 +10,6 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Settings
         string ClientesCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
+        string PontuacaoClienteCollectionName { get; set; }
     }
 }

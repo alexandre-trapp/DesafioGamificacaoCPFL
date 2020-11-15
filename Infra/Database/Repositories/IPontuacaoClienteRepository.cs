@@ -1,15 +1,14 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using System.Collections.Generic;
 using DesafioGamificacaoCPFL.Models;
 
 namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
 {
     public interface IPontuacaoClienteRepository
     {
-        Task<Cliente> Get(string id);
-        Task<IEnumerable<PontuacaoCliente>> GetAll();
-        Task<string> Create(PontuacaoCliente pontuacaoCliente);
-        Task<string> Delete(string id);
-        Task<string> Update(PontuacaoCliente pontuacaoCliente);
+        Task<PontuacaoCliente> Get(string clienteId);
+        Task Create(PontuacaoCliente pontuacaoCliente);
+        Task Delete(string clienteId);
+        Task Update(PontuacaoCliente pontuacaoCliente, string clienteId);
     }
 }

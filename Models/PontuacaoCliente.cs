@@ -2,7 +2,7 @@
 {
     public class PontuacaoCliente
     {
-        public string idCliente { get; set; }
+        public string ClienteId { get; set; }
         public int QuantidadePontos { get; set; }
     }
 }
