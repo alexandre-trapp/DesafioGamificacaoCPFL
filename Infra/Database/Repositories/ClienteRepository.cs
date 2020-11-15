@@ -33,7 +33,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
             var cliente = await _clientes.FindAsync<Cliente>(cliente => cliente.Id == id);
 
             if (!cliente.Any())
-                throw new OperationCanceledException($"Cliente não encontrado com o id {id}");
+                throw new OperationCanceledException($"Cliente com o id {id} não encontrado no sistema.");
 
             return cliente.First();
         }
