@@ -94,8 +94,12 @@ namespace DesafioGamificacaoCPFL.Services
             pontuacaoCliente.QuantidadePontosDeBonusRecebidosCadaNivel = _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel;
 
             pontuacaoCliente.QuantidadeXP = _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0
-                                              ? pontuacaoCliente.QuantidadeXP + _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
-                                              : _pontuacaoClienteResponse.TotalPontosCliente;
+
+                                              ? pontuacaoCliente.QuantidadeXP +
+                                                pontuacaoCliente.QuantidadeNovosPontos +
+                                                _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
+
+                                              : pontuacaoCliente.QuantidadeXP + pontuacaoCliente.QuantidadeNovosPontos;
 
             await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoCliente);
         }
