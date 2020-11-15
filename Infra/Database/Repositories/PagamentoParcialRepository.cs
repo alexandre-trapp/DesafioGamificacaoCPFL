@@ -26,7 +26,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
 
         public async Task<PagamentoParcial> ConsultarPagamentoParcialDoCliente(string clienteId)
         {
-            var buscaPagamento = await _pagamentoParcial.FindAsync<PagamentoParcial>(cliente => cliente.Id == clienteId);
+            var buscaPagamento = await _pagamentoParcial.FindAsync<PagamentoParcial>(pagamento => pagamento.ClienteId == clienteId);
             var pagamentoParcial = buscaPagamento.FirstOrDefault();
 
             if (pagamentoParcial == null)
