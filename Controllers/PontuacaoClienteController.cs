@@ -27,7 +27,7 @@ namespace DesafioGamificacaoCPFL.Controllers
         public async Task<ActionResult> Create(PontuacaoCliente pontuacaoCliente)
         {
             await _pontuacaoRepository.Create(pontuacaoCliente);
-            return Ok();
+            return NoContent();
         }
 
         [HttpGet("pontuacaoCliente/{clienteId}")]
