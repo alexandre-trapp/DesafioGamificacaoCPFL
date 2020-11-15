@@ -17,14 +17,17 @@ namespace DesafioGamificacaoCPFL.Services
 
         public async Task<PontuacaoClienteResponse> AtualizarPontuacaoClienteConformeRegraDeGamificacao(PontuacaoCliente pontuacaoCliente)
         {
+            string mensagemAtingiuProximoNivel = string.Empty;
             _pontuacaoClienteResponse = new PontuacaoClienteResponse();
 
             CalcularQuantosPontosPrecisaParaAtingirProximoNivel(pontuacaoCliente);
 
             if (ClienteAtingiuProximoNivel(pontuacaoCliente))
             {
-                CalcularQuantidadeDePontosGanhosPorAtingirProximoNivel(pontuacaoCliente);
+                mensagemAtingiuProximoNivel = "Parabéns, você atingiu o próximo nível!" + Environment.NewLine;
+
                 ResetarQuantidadePontosNecessariosParaAtingirProximoNivel(pontuacaoCliente);
+                CalcularQuantidadeDePontosGanhosPorAtingirProximoNivel(pontuacaoCliente);
             }
 
             CalcularQuantidadeDePontosTotalDoCliente(pontuacaoCliente);
@@ -32,7 +35,7 @@ namespace DesafioGamificacaoCPFL.Services
 
             await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoCliente);
 
-            _pontuacaoClienteResponse.Mensagem = $"Pontuação atualizada com sucesso, sua nova pontuação é {pontuacaoCliente.QuantidadePontosAtual}, " +
+            _pontuacaoClienteResponse.Mensagem = $"{mensagemAtingiuProximoNivel}Pontuação atualizada com sucesso, sua nova pontuação é {pontuacaoCliente.QuantidadePontosAtual}, " +
                 $"faltando {pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos para atingir o próximo nível " +
                 $"({pontuacaoCliente.QuantidadePontosAtual + pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel} pontos ou mais.)";
 
@@ -45,7 +48,7 @@ namespace DesafioGamificacaoCPFL.Services
                 pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel - pontuacaoCliente.QuantidadeNovosPontos;
 
             else if (pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel == 0)
-                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadeNovosPontos;
+                pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosPadraoParaProximoNivel;
 
             else
                 pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel = pontuacaoCliente.QuantidadePontosNecessariosParaAtingirProximoNivel * -1;
@@ -67,7 +70,7 @@ namespace DesafioGamificacaoCPFL.Services
             _pontuacaoClienteResponse.TotalPontosCliente = (pontuacaoCliente.QuantidadePontosAtual +
 
                                                              (_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0
-                                                                ? _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
+                                                                ? (pontuacaoCliente.QuantidadeNovosPontos + _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel)
                                                                 : pontuacaoCliente.QuantidadeNovosPontos) );
     }
 }
