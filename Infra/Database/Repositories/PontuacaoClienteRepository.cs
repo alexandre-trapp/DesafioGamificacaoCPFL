@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         {
             var pontuacaoCliente = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacaoCliente => pontuacaoCliente.ClienteId == clienteId);
 
-            if (!pontuacaoCliente.Any())
+            if (pontuacaoCliente == null || !pontuacaoCliente.Current.Any())
                 throw new OperationCanceledException($"Pontuação do cliente com o id {clienteId} não encontrado no sistema.");
 
             return pontuacaoCliente.First();
