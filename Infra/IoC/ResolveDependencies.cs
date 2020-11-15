@@ -18,6 +18,7 @@ namespace DesafioGamificacaoCPFL.Infra.IoC
 
             services.AddSingleton<IClienteRepository, ClienteRepository>();
             services.AddSingleton<IPontuacaoClienteRepository, PontuacaoClienteRepository>();
+            services.AddSingleton<IPagamentoParcialRepository, PagamentoParcialRepository>();
         }
     }
 }
