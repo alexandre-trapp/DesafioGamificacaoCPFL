@@ -30,16 +30,16 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         {
             var pontuacaoCliente = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacaoCliente => pontuacaoCliente.ClienteId == clienteId);
 
-            if (pontuacaoCliente == null || !pontuacaoCliente.Current.Any())
+            if (pontuacaoCliente == null || !pontuacaoCliente.Any())
                 throw new OperationCanceledException($"Pontuação do cliente com o id {clienteId} não encontrado no sistema.");
 
-            return pontuacaoCliente.First();
+            return await pontuacaoCliente.FirstAsync();
         }
 
         public async Task<IEnumerable<PontuacaoCliente>> GetAll()
         {
             var pontuacaoClientes = await _pontuacaoCliente.FindAsync<PontuacaoCliente>(pontuacao => true);
-            return pontuacaoClientes.ToEnumerable();
+            return await pontuacaoClientes?.ToListAsync();
         }
 
         public async Task Update(PontuacaoCliente pontuacaoCliente) =>

@@ -29,10 +29,10 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         {
             var pagamentoParcial = await _pagamentoParcial.FindAsync<PagamentoParcial>(cliente => cliente.Id == clienteId);
 
-            if (pagamentoParcial == null || !pagamentoParcial.Current.Any())
+            if (pagamentoParcial == null || !pagamentoParcial.Any())
                 throw new OperationCanceledException($"pagamento parcial do cliente com id {clienteId} não encontrado no sistema.");
 
-            return pagamentoParcial.Current.First();
+            return await pagamentoParcial.FirstAsync();
         }
     }
 }

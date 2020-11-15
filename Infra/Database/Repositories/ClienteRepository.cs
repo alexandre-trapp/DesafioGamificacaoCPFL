@@ -32,16 +32,16 @@ namespace DesafioGamificacaoCPFL.Infra.Database.Repositories
         {
             var cliente = await _clientes.FindAsync<Cliente>(cliente => cliente.Id == id);
 
-            if (cliente == null || !cliente.Current.Any())
+            if (cliente == null || !cliente.Any())
                 throw new OperationCanceledException($"Cliente com o id {id} não encontrado no sistema.");
 
-            return cliente.Current.FirstOrDefault();
+            return await cliente.FirstAsync();
         }
 
         public async Task<IEnumerable<Cliente>> GetAll()
         {
             var clientes = await _clientes.FindAsync<Cliente>(cliente => true);
-            return clientes?.ToEnumerable();
+            return await clientes?.ToListAsync();
         }   
     }
 }
