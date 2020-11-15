@@ -27,7 +27,7 @@ namespace DesafioGamificacaoCPFL.Controllers
             _clienteRepository = clienteRepository;
         }
 
-        [HttpPost("pagamentoParcial/cadastrarNovoPagamento/")]
+        [HttpPost("pagamentoParcial/cadastrarNovoPagamento")]
         public async Task<ActionResult<PagamentoParcialResponse>> CadastrarNovoPagamento(PagamentoParcial pagamentoParcial)
         {
             return Ok(await PagamentoParcialService.CadastrarNovoPagamentoParcial(
