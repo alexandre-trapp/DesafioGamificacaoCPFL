@@ -15,7 +15,7 @@ namespace DesafioGamificacaoCPFL.Models
         public decimal ValorRestante { get; internal set; }
         public decimal QuantidadeParcelas { get; set; }
         public decimal ValorDaParcela { get; internal set; }
-        public MetodoPagamento MetodoPagamento { get; set; }
+        public MetodoPagamento MetodoPagamento { internal get; set; }
     }    
 
     public class PagamentoParcialResponse
@@ -28,7 +28,7 @@ namespace DesafioGamificacaoCPFL.Models
 
     public class MetodoPagamento
     {
-        public bool Fatura { get; set; }
+        public bool Fatura { get; set; } = false;
         public CartaoCredito CartaoCredito { get; set; }
         public DadosBancarios DadosBancarios { get; set; }
     }
