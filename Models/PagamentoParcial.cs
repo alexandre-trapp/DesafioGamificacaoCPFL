@@ -11,8 +11,15 @@ namespace DesafioGamificacaoCPFL.Models
         public string ClienteId { get; set; }
         public decimal ValorTotalFatura { get; set; }
         public decimal ValorPagoParcialmente { get; set; }
-        public decimal ValorRestante { get; set; }
+        public decimal ValorRestante { get; internal set; }
         public decimal QuantidadeParcelas { get; set; }
-        public decimal ValorDaParcela { get; set; }
+        public decimal ValorDaParcela { get; internal set; }
+    }
+
+    public class PagamentoParcialResponse
+    {
+        public decimal ValorRestante { get; internal set; }
+        public decimal ValorDaParcela { get; internal set; }
+        public string Mensagem { get; internal set; }
     }
 }
