@@ -46,11 +46,18 @@ namespace DesafioGamificacaoCPFL.Controllers
             return Ok(await _pontuacaoRepository.Get(clienteId));
         }
 
-        [HttpPost("pontuacaoCliente/atualizarPontosCliente")]
-        public async Task<ActionResult> AtualizarPontosCliente(PontuacaoCliente pontuacaoCliente)
+        [HttpPost("pontuacaoCliente/adicionarPontosAoCliente")]
+        public async Task<ActionResult> AdicionarPontosAoCliente(PontuacaoCliente pontuacaoCliente)
         {
             var pontuacaoClienteService = new PontuacaoClienteService(_pontuacaoRepository);
-            return Ok(await pontuacaoClienteService.AtualizarPontuacaoClienteConformeRegraDeGamificacao(pontuacaoCliente));
+            return Ok(await pontuacaoClienteService.AdicionarPontosAoClienteConformeRegraDeGamificacao(pontuacaoCliente));
+        }
+
+        [HttpPost("pontuacaoCliente/resgatarPontosDoCliente")]
+        public async Task<ActionResult> ResgatarPontosDoCliente(ResgatePontosRequest resgatePontosCliente)
+        {
+            var pontuacaoClienteService = new PontuacaoClienteService(_pontuacaoRepository);
+            return Ok(await pontuacaoClienteService.ResgatarPontosDoCliente(resgatePontosCliente));
         }
 
         [HttpDelete("pontuacaoCliente/deletar")]

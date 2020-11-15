@@ -15,7 +15,7 @@ namespace DesafioGamificacaoCPFL.Services
         public PontuacaoClienteService(IPontuacaoClienteRepository pontuacaoClienteRepository) =>
             _pontuacaoClienteRepository = pontuacaoClienteRepository;
 
-        public async Task<PontuacaoClienteResponse> AtualizarPontuacaoClienteConformeRegraDeGamificacao(PontuacaoCliente pontuacaoCliente)
+        public async Task<PontuacaoClienteResponse> AdicionarPontosAoClienteConformeRegraDeGamificacao(PontuacaoCliente pontuacaoCliente)
         {
             string mensagemAtingiuProximoNivel = string.Empty;
             _pontuacaoClienteResponse = new PontuacaoClienteResponse();
@@ -71,5 +71,29 @@ namespace DesafioGamificacaoCPFL.Services
                                                              (_pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel > 0
                                                                 ? _pontuacaoClienteResponse.PontosGanhosBonusPorAtingirNovoNivel
                                                                 : pontuacaoCliente.QuantidadeNovosPontos) );
+
+        public async Task<ResgatePontosResponse> ResgatarPontosDoCliente(ResgatePontosRequest resgatePontos)
+        {
+            var pontuacaoAtual = await _pontuacaoClienteRepository.Get(resgatePontos.ClienteId);
+
+            await AtualizarQuantidadePontosClientesAoEfetuarResgate(resgatePontos, pontuacaoAtual);
+
+            return new ResgatePontosResponse
+            {
+                TotalPontosCliente = pontuacaoAtual.QuantidadePontosAtual,
+                Mensagem = $"Resgate efetuado com sucesso, seu saldo atual é de {pontuacaoAtual.QuantidadePontosAtual} pontos."
+            };
+        }
+
+        private async Task AtualizarQuantidadePontosClientesAoEfetuarResgate(ResgatePontosRequest resgatePontos, 
+            PontuacaoCliente pontuacaoAtual)
+        {
+            if (pontuacaoAtual.QuantidadePontosAtual < resgatePontos.QuantidadePontosResgatados)
+                throw new OperationCanceledException("Não é possível efetuar o resgate dos pontos, seu saldo de pontos é inferior a quantidade de resgate solicitado");
+
+            pontuacaoAtual.QuantidadeNovosPontos = 0;
+            pontuacaoAtual.QuantidadePontosAtual = pontuacaoAtual.QuantidadePontosAtual - resgatePontos.QuantidadePontosResgatados;
+            await _pontuacaoClienteRepository.AtualizarPontosCliente(pontuacaoAtual);
+        }
     }
 }
