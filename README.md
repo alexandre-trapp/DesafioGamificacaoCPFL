@@ -33,5 +33,4 @@ raiz do projeto.
 https://localhost:5002/swagger/index.html (ou http://localhost:5003/swagger/index.html, mas irá redirecionar para https)
 
 ## Documentação
-Toda a documentação da API, nomes dos métodos, parâmetros, corpo de requests e respostas estará no swagger, ou ainda
-nesse já publicado externamente https://desafiogamificacaocpfl20201114183303.azurewebsites.net/swagger/index.html.
+Toda a documentação da API, nomes dos métodos, parâmetros, corpo de requests e respostas estará no swagger.
