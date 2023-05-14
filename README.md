@@ -1,33 +1,33 @@
-# Desafio Gamificacao CPFL
+# CPFL Gamification Challenge
 
-# REST API para consumo pelo frontend do desafio CPFL:
+# REST API for consumption by the CPFL challenge frontend:
 
-Gerenciar os dados dos cliente, pagamentos parciais das faturas e cálculo de pontuações, XPs e bônus 
-para os clientes trocarem por descontos ou cupons em lojas.
+Manage customer data, partial invoice payments and calculation of scores, XPs and bonuses
+for customers to exchange for discounts or coupons in stores.
 
-Para acessar as APIs, pode acessar o link externo exibido acima, ou baixar e executar o projeto localmente:
+To access the APIs, you can access the external link shown above, or download and run the project locally:
 
-## Download do projeto
+## Download the project
 
-- No seu git bash, powershell, vscode ou VisualStudio, poderá fazer o clone do repositório e abrir o projeto:
+- In your git bash, powershell, vscode or VisualStudio, you can clone the repository and open the project:
   
   **git clone** https://github.com/alexandre-trapp/DesafioGamificacaoCPFL.git
 
-- O banco de dados mongodb já está configurado no atlas para uso, porém irei desativar o cluster após 
-  o desafio, se baixar e quiser rodar, poderá criar uma conta free em https://www.mongodb.com/cloud/atlas, criar o cluster, usuário e senha
-  e gerar uma string de conexão, informando-a no arquivo appsettings.json na raiz do projeto (DatabaseSettings > ConnectionString), aqui tem uma documentação como 
-  fazer isso: https://docs.microsoft.com/pt-br/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-5.0&tabs=visual-studio
+- The mongodb database is already configured in the atlas for use, but I will deactivate the cluster after
+  the challenge, if you download it and want to run it, you can create a free account at https://www.mongodb.com/cloud/atlas, create the cluster, user and password
+  and generate a connection string, informing it in the appsettings.json file at the root of the project (DatabaseSettings > ConnectionString), here is documentation on how
+  do this: https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-5.0&tabs=visual-studio
   
    
-## Build / Run 
-- Pra rodar a aplicação, pode ser pelo VisualStudio se já tiver familiaridade, dando o build na solution ou projeto (Ctrl + B),
-ou no vscode, bash, powrshell (com o sdk do .net core 3.1 instalado - https://dotnet.microsoft.com/download/dotnet-core/3.1) executar o comando **dotnet build** e em seguida **dotnet run**, na
-raiz do projeto.
+## Build / Run
+- To run the application, it can be through VisualStudio if you are already familiar with it, building the solution or project (Ctrl + B),
+or in vscode, bash, powrshell (with .net core 3.1 sdk installed - https://dotnet.microsoft.com/download/dotnet-core/3.1) run the command **dotnet build** and then ** dotnet run**, na
+project root.
 
 # REST API
 
-- Para acessar a url com documentação das APIs localmente, após executar a aplicação, acessar no navegador
-https://localhost:5002/swagger/index.html (ou http://localhost:5003/swagger/index.html, mas irá redirecionar para https)
+- To access the url with the documentation of the APIs locally, after running the application, access it in the browser
+https://localhost:5002/swagger/index.html (or http://localhost:5003/swagger/index.html but will redirect to https)
 
-## Documentação
-Toda a documentação da API, nomes dos métodos, parâmetros, corpo de requests e respostas estará no swagger.
+## Documentation
+All API documentation, method names, parameters, request and response bodies will be in the swagger.
