@@ -34,6 +34,29 @@ namespace DesafioGamificacaoCPFL.Controllers
             return Ok(await _clienteRepository.Get(id));
         }
 
+        [HttpGet("clientes/teste")]
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetAll()
+        {
+            return Ok(new List<Cliente>
+            {
+                new Cliente
+                {
+                    Id = "1",
+                    Nome = "teste1"
+                },
+                new Cliente
+                {
+                    Id = "2",
+                    Nome = "teste2"
+                },
+                new Cliente
+                {
+                    Id = "3",
+                    Nome = "teste3"
+                },
+            });
+        }
+
         [HttpGet("clientes/listarTodos")]
         public async Task<ActionResult<IEnumerable<Cliente>>> GetAll()
         {
