@@ -10,15 +10,15 @@ namespace DesafioGamificacaoCPFL.Infra.IoC
     {
         public static void InjectDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.Configure<DatabaseSettings>(
-                    configuration.GetSection(nameof(DatabaseSettings)));
+            //services.Configure<DatabaseSettings>(
+            //        configuration.GetSection(nameof(DatabaseSettings)));
 
-            services.AddSingleton<IDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
+            //services.AddSingleton<IDatabaseSettings>(sp =>
+            //    sp.GetRequiredService<IOptions<DatabaseSettings>>().Value);
 
-            services.AddSingleton<IClienteRepository, ClienteRepository>();
-            services.AddSingleton<IPontuacaoClienteRepository, PontuacaoClienteRepository>();
-            services.AddSingleton<IPagamentoParcialRepository, PagamentoParcialRepository>();
+            //services.AddSingleton<IClienteRepository, ClienteRepository>();
+            //services.AddSingleton<IPontuacaoClienteRepository, PontuacaoClienteRepository>();
+            //services.AddSingleton<IPagamentoParcialRepository, PagamentoParcialRepository>();
         }
     }
 }

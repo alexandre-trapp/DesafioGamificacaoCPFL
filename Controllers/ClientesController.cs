@@ -15,11 +15,10 @@ namespace DesafioGamificacaoCPFL.Controllers
         private readonly ILogger<ClientesController> _logger;
         private readonly IClienteRepository _clienteRepository;
 
-        public ClientesController(ILogger<ClientesController> logger,
-            IClienteRepository clienteRepository)
+        public ClientesController(ILogger<ClientesController> logger)
         {
             _logger = logger;
-            _clienteRepository = clienteRepository;
+            //_clienteRepository = clienteRepository;
         }
 
         [HttpPost("clientes/cadastrar")]
